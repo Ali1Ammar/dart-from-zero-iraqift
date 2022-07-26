@@ -30,7 +30,7 @@ void main(List<String> args) {
   file.deleteSync();
   file.exists();
   file.existsSync();
-  
+
   file.readAsStringSync();
   file.readAsLinesSync();
   file.readAsBytesSync();
@@ -41,4 +41,46 @@ void main(List<String> args) {
   file.lastModifiedSync();
   file.copySync("/desktop/test2.txt");
 
+
+print(Directory.current);
+  print(Directory("/desktop"));
+  final newD = Directory(Directory.current.path + "/new");
+  newD.createSync();
+  // newD.create();
+  print(newD.existsSync());
+  print(newD.exists());
+  newD.delete();
+  newD.deleteSync();
+
+  newD.rename("ok");
+  newD.renameSync("ok");
+  newD.list();
+  newD.listSync().forEach((element) {
+    print(element);
+  });
+
+
+  print(file.path);
+  print(file.uri);
+  print(file.absolute);
+  print(file.parent);
+
+  file.create();
+  file.createSync();
+  file.delete();
+  file.deleteSync();
+  file.exists();
+  file.existsSync();
+  file.readAsStringSync();
+  file.readAsLinesSync();
+  file.readAsBytesSync();
+  file.writeAsStringSync("hello");
+  file.writeAsBytesSync([1, 2, 3]);
+  file.renameSync("ok");
+  file.lengthSync();
+  file.lastModifiedSync();
+  file.copySync("/desktop/test2.txt");
+
+
 }
+
