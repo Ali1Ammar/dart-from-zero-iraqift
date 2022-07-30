@@ -15,8 +15,8 @@ void main(List<String> args) {
   var1 = -4;
 
   int ff = 5;
-  ff = 5.3;
-  ff = 2 / 3;
+  // ff = 5.3;
+  // ff = 2 / 3;
   ff = 2 ~/ 3;
 
   double dd = 5.5;
