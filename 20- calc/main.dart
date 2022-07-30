@@ -1,40 +1,44 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  // built calculator with cli
-  var data = [];
+  final res = [];
   while (true) {
     print("enter your number");
-    var input = stdin.readLineSync();
-    var num1 = int.parse(input ?? "0");
-    data.add(num1);
-
+    final numb = num.parse(stdin.readLineSync()!);
+    res.add(numb);
     print("enter your operator: or done for calc the result:");
-    var operator = stdin.readLineSync() ?? "+";
+    final operator = stdin.readLineSync()!;
     if (operator == "done") {
       break;
     }
-    data.add(operator);
+    res.add(operator);
   }
-  print(data);
-  while (true) {
-    if (data.length < 3) break;
-    final num2 = data[data.length - 1] as num;
-    final op = data[data.length - 2] as String;
-    final num1 = data[data.length - 3] as num;
-
-    data.removeRange(data.length - 3, data.length);
-    num? result;
-    if (op == "+") {
-      result = num1 + num2;
-    } else if (op == "-") {
-      result = num1 - num2;
-    } else if (op == "*") {
-      result = num1 * num2;
-    } else if (op == "/") {
-      result = num1 / num2;
+  print(res);
+  // res = [10];
+  while (res.length != 1) {
+    final numb1 = res[res.length - 1] as num; // 6
+    final operator = res[res.length - 2] as String; // +
+    final numb2 = res[res.length - 3] as num; // 4
+    res.removeRange(res.length - 3, res.length);// []
+    final num exec;
+    switch (operator) {
+      case "+":
+        exec = numb1 + numb2;
+        break;
+      case "-":
+        exec = numb1 - numb2;
+        break;
+      case "/":
+        exec = numb1 / numb2;
+        break;
+      case "*":
+        exec = numb1 * numb2;
+        break;
+      default:
+        throw Exception("PLease Only Use + - / *");
     }
-    data.add(result!);
+    // exec = 10
+    res.add(exec);  // res = [10]
   }
-  print(data.first);
+  print(res);
 }

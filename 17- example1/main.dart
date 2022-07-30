@@ -1,57 +1,47 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  print("Hello in this program");
+  print("hello in this program");
 
   while (true) {
-    print("enter a number please");
-    final number = int.parse(stdin.readLineSync() ?? '0');
-    print("what do you want to know about the number");
-    print(
-        "1 - is it even or odd 2 - is it a prime number 3 - is it a negative number");
-    final choice = int.parse(stdin.readLineSync() ?? '0');
-
-    if (choice == 1) {
-      if (number % 2 == 0) {
-        print("the number is even");
+    print("Enter NUmber PLease");
+    final numStr = stdin.readLineSync()!;
+    final num = int.tryParse(numStr);
+    if (num == null) {
+      print("please Enter only number");
+      continue;
+    }
+    print(" what you need to know about $num");
+    print("1 is even or odd");
+    print("2 is prime or not");
+    print("3 is negative or positive");
+    print("4 to exit");
+    final option = stdin.readLineSync()!;
+    if (option == "4") {
+      break;
+    } else if (option == "1") {
+      if (num % 2 == 0) {
+        print("$num is even");
       } else {
-        print("the number is odd");
+        print("$num is odd");
       }
-    } else if (choice == 2) {
-      if (isPrime(number)) {
-        print("the number is a prime number");
+    } else if (option == "2") {
+      if (isPrime(num)) {
+        print("$num is prime");
       } else {
-        print("the number is not a prime number");
+        print("$num is not prime");
       }
-    } else if (choice == 3) {
-      if (number < 0) {
-        print("the number is a negative number");
+    } else if (option == "3") {
+      if (num > -1) {
+        print("$num is positive");
       } else {
-        print("the number is not a negative number");
+        print("$num is negative");
       }
     } else {
-      print("invalid choice");
+      print("please Enter only 1 2 3 4");
+      continue;
     }
   }
-
-  // switch (choice) {
-  //   case 1:
-  //     print(number.isEven ? "it is even" : "it is odd");
-  //     break;
-  //   case 2:
-  //     print(isPrime(number)
-  //         ? "it is a prime number"
-  //         : "it is not a prime number");
-  //     break;
-  //   case 3:
-  //     print(number.isNegative
-  //         ? "it is a negative number"
-  //         : "it is not a negative number");
-  //     break;
-
-  //   default:
-  //     print("invalid choice");
-  // }
 }
 
 bool isPrime(int number) {
